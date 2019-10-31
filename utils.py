@@ -1,4 +1,5 @@
 import random
+from fractions import gcd
  
 def is_Prime(n):
     """
@@ -47,7 +48,19 @@ def generate_prime_number(number_of_digits):
         if is_Prime(random_number):
             return random_number
             
+def generate_cypher_exponent(p,q):
+    pq = (p-1)*(q-1)
+    while True:
+        random_number = random.randrange(10**3,10**5)
+        if gcd(random_number,pq) == 1:
+            return random_number
 
-
-
+def crypting_RSA(n, e, plaintext):
+	"""
+	m the message to crypt as a list of two digit int
+	n the mod (int)
+	e the exposant (int)
+	"""
+	cypher = [ (m ** e) % n  for m in plaintext]
+	return cypher
 

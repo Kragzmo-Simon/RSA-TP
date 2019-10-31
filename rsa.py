@@ -12,7 +12,7 @@ m = 65483
 
 # Générer un nombre avec un certain nombre de chiffres
 #print(len(str(2**2048)))
-nb_digits = 200
+nb_digits = 20
 
 # Générer p et q
 start_time = time.time()
@@ -34,18 +34,8 @@ print("n calculé : ", n, "\n")
 
 # Choisir un exposant de chiffrement e
 # 𝑝𝑔𝑐𝑑( 𝑒 , (𝑝−1)(𝑞−1) ) = 1
-e = 9007
-print(is_Prime(e))
-
-
-def crypting_RSA(n, e, plaintext):
-	"""
-	m the message to crypt as a list of two digit int
-	n the mod (int)
-	e the exposant (int)
-	"""
-	cypher = [ (m ** e) % n  for m in plaintext]
-	return cypher
+e = generate_cypher_exponent(p,q)
+print("e trouvé : ", e)
 
 
 
