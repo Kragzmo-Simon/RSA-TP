@@ -47,13 +47,8 @@ def generate_prime_number(number_of_digits):
         random_number = random.randrange(10**(number_of_digits-1), 10**number_of_digits)
         if is_Prime(random_number):
             return random_number
-            
+
 def egcd(a, b):
-	"""
-	from https://stackoverflow.com/questions/4798654/modular-multiplicative-inverse-function-in-python 
-	find the greatest common divider between a and b
-	a, b two positive int 
-	"""
     if a == 0:
         return (b, 0, 1)
     else:
@@ -61,11 +56,6 @@ def egcd(a, b):
         return (g, x - (b // a) * y, y)
 
 def modinv(a, m):
-	"""
-	from https://stackoverflow.com/questions/4798654/modular-multiplicative-inverse-function-in-python
-	a, m two int
-	return multiplicative inverse of a modulo m
-	"""
     g, x, y = egcd(a, m)
     if g != 1:
         raise Exception('modular inverse does not exist')
@@ -89,10 +79,9 @@ def crypting_RSA(n, e, plaintext):
 	cypher = [ (m ** e) % n  for m in plaintext]
 	return cypher
 
-
 def decrypt_RSA(p, q, e, cypher):
 	d = modinv(e , (p-1)*(q-1))
 	plaintext = [(c**d)% (p*q) for c in cypher]
 	return plaintext
 
-print(modinv(7467,11 200))
+print(modinv(7467,11200))
