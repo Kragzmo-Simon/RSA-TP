@@ -37,3 +37,18 @@ def is_Prime(n):
             return False
  
     return True  
+
+def generate_prime_number(number_of_digits):
+    """
+    Generate randoms number until it finds a prime number (uses the Miller-Rabin test).
+    """
+    while True:
+        random_number = random.randrange(10**(number_of_digits-1), 10**number_of_digits)
+        if is_Prime(random_number):
+            return random_number
+            
+
+
+
+
+
