@@ -31,7 +31,7 @@ def is_Prime(n):
                 return False
         return True  
  
-    for i in range(8):#number of trials 
+    for i in range(10):#number of trials 
         a = random.randrange(2, n)
         if trial_composite(a):
             return False
