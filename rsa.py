@@ -38,9 +38,12 @@ def crypting_RSA(n, e, plaintext):
 	cypher = [ (m ** e) % n  for m in plaintext]
 	return cypher
 
+def decrypt_RSA(p, q, e, cypher):
+	d = modinv(e , (p-1)*(q-1))
+	plaintext = [(c**d)% (p*q) for c in cypher]
+	return plaintext
 
-
-
+print(modinv(7467,11 200))
 
 
 
