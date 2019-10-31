@@ -38,5 +38,18 @@ e = 9007
 print(is_Prime(e))
 
 
+def crypting_RSA(n, e, plaintext):
+	"""
+	m the message to crypt as a list of two digit int
+	n the mod (int)
+	e the exposant (int)
+	"""
+	cypher = [ (m ** e) % n  for m in plaintext]
+	return cypher
+
+
+
+
+
 
 

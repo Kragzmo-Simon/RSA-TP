@@ -51,4 +51,3 @@ def generate_prime_number(number_of_digits):
 
 
 
-
