@@ -5,8 +5,6 @@ import time
 print("Code par FERY Simon et DURAFFOURG Maud")
 print('Exercice RSA')
 
-
-
 # message à chiffrer et déchiffrer
 m = 65483
 
@@ -31,11 +29,11 @@ print("q choisi : ", q, "\n")
 n= p*q
 print("n calculé : ", n, "\n")
 
-
 # Choisir un exposant de chiffrement e
 # 𝑝𝑔𝑐𝑑( 𝑒 , (𝑝−1)(𝑞−1) ) = 1
 e = generate_cypher_exponent(p,q)
-print("e trouvé : ", e)
+print("e choisi : ", e, "\n")
 
+plaintext = "canard";
 
 

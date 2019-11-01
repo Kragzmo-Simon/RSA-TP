@@ -72,16 +72,19 @@ def generate_cypher_exponent(p,q):
 
 def crypting_RSA(n, e, plaintext):
 	"""
-	m the message to crypt as a list of two digit int
+	plaintext the message to crypt as a list of two digit int
 	n the mod (int)
 	e the exposant (int)
 	"""
-	cypher = [ (m ** e) % n  for m in plaintext]
+	cypher = [ pow(m, e, n ) for m in plaintext]
 	return cypher
 
 def decrypt_RSA(p, q, e, cypher):
+	"""
+	cypher the message to decrypt
+	p, q, e an int 
+	"""
 	d = modinv(e , (p-1)*(q-1))
-	plaintext = [(c**d)% (p*q) for c in cypher]
+	plaintext = [ pow(c, d, (p*q) ) for c in cypher]
 	return plaintext
 
-print(modinv(7467,11200))
