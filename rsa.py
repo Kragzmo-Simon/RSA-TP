@@ -18,7 +18,7 @@ p = generate_prime_number(nb_digits)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 start_time = time.time()
-q = generate_prime_number(nb_digits)
+q = generate_prime_number(nb_digits+2)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 # TODO : verifier distinction entre p et q
@@ -33,7 +33,17 @@ print("n calculé : ", n, "\n")
 # 𝑝𝑔𝑐𝑑( 𝑒 , (𝑝−1)(𝑞−1) ) = 1
 e = generate_cypher_exponent(p,q)
 print("e choisi : ", e, "\n")
+print("Taper le message a crypter en minuscule : ")
+message = input();
 
-plaintext = "canard";
+plaintext = create_plaintext(message)
 
+print("Le message choisit donne, en chiffre : ", plaintext, "\n")
 
+cypher = crypting_RSA(n, e, plaintext)
+
+print("Le cypher donne : ", cypher, "\n")
+
+plaintextDecrypt = decrypt_RSA(p, q, e, cypher)
+
+print("Le message decode donne : ", plaintextDecrypt, "\n")
