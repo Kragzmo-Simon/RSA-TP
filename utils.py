@@ -1,6 +1,9 @@
 import random
 from fractions import gcd
- 
+import time
+import numpy
+
+
 def is_Prime(n):
     """
     Miller-Rabin primality test.
@@ -72,7 +75,7 @@ def generate_cypher_exponent(p,q):
 
 def crypting_RSA(n, e, plaintext):
 	"""
-	plaintext the message to crypt as a list of int
+    plaintext the message to crypt as a list of int
 	n the mod (int)
 	e the exposant (int)
 	"""
@@ -95,3 +98,14 @@ def create_plaintext(message):
 	plaintext = [int(plaintext)]
 	return plaintext
 
+def average_time_for_generate_prime_number(nb_digits, nb_iterations) :
+    data_time = []
+    for i in range(0, nb_iterations):
+        start_time = time.time()
+        value = generate_prime_number(nb_digits)
+        time_function = time.time() - start_time
+        data_time.append(time_function)
+        print("Temps n", i, " : ", time_function, "\n")
+    return numpy.mean(data_time)
+
+print(average_time_for_generate_prime_number(200, 20))
