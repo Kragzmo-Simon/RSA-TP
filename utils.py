@@ -1,5 +1,6 @@
 import random
 from fractions import gcd
+import time
  
 def is_Prime(n):
     """
