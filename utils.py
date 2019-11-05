@@ -3,7 +3,6 @@ from fractions import gcd
 import time
 import numpy
 
-
 def is_Prime(n):
     """
     Miller-Rabin primality test.
