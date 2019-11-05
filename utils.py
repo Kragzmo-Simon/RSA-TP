@@ -99,12 +99,18 @@ def create_plaintext(message):
 
 def average_time_for_generate_prime_number(nb_digits, nb_iterations) :
     data_time = []
+    data = []
     for i in range(0, nb_iterations):
         start_time = time.time()
         value = generate_prime_number(nb_digits)
         time_function = time.time() - start_time
+        data.append(value)
         data_time.append(time_function)
-        print("Temps n", i, " : ", time_function, "\n")
-    return numpy.mean(data_time)
+        if i == int(nb_iterations/4) :
+            print("Perc : 25% ")
+        if i == int(nb_iterations / 2):
+            print("Perc : 50% ")
+        if i == int(3* nb_iterations / 4):
+            print("Perc : 75% ")
+    return numpy.mean(data_time), data
 
-print(average_time_for_generate_prime_number(200, 20))
