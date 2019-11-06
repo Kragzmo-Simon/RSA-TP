@@ -100,17 +100,38 @@ def create_plaintext(message):
 def average_time_for_generate_prime_number(nb_digits, nb_iterations) :
     data_time = []
     data = []
+    number_of_steps = 10
+    progress_step = nb_iterations // number_of_steps
     for i in range(0, nb_iterations):
         start_time = time.time()
         value = generate_prime_number(nb_digits)
         time_function = time.time() - start_time
         data.append(value)
         data_time.append(time_function)
-        if i == int(nb_iterations/4) :
-            print("Perc : 25% ")
-        if i == int(nb_iterations / 2):
-            print("Perc : 50% ")
-        if i == int(3* nb_iterations / 4):
-            print("Perc : 75% ")
+        if i % progress_step == 0:
+            print("Progress : ", (i//progress_step)*100//number_of_steps, "%")
     return numpy.mean(data_time), data
+
+def average_time_for_decryption(prime_number_data):
+    data_time = []
+    number_of_steps = 10
+    nb_iterations = len(prime_number_data)//2
+    progress_step = nb_iterations // number_of_steps
+    message = "aplaintextodecrypt"
+    plaintext = create_plaintext(message)
+    for i in range(0, nb_iterations):
+        p = prime_number_data[i]
+        q = prime_number_data[i+1]
+        n = p*q
+        e = generate_cypher_exponent(p,q)
+        cypher = crypting_RSA(n, e, plaintext)
+
+        start_time = time.time()
+        plaintext = decrypt_RSA(p, q, e, cypher)
+        time_function = time.time() - start_time
+        data_time.append(time_function)
+
+        if i % progress_step == 0:
+            print("Progress : ", (i//progress_step)*100//number_of_steps, "%")
+    return numpy.mean(data_time)
 

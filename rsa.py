@@ -3,7 +3,7 @@ from utils import *
 import time
 
 print("Code par FERY Simon et DURAFFOURG Maud")
-print('Exercice RSA')
+print('Exercice RSA\n')
 
 # message à chiffrer et déchiffrer
 m = 65483
@@ -37,20 +37,17 @@ e = generate_cypher_exponent(p,q)
 print("e choisi : ", e, "\n")
 
 # Choix du message à chiffrer
-print("Taper le message a crypter en minuscule : ")
-#message = input()
-message = "longuechaineatester"
+#print("Taper le message a crypter en minuscule : ")
+message = "chainedecaractereatester"
+print("Message à crypter/décrypter : ", message)
 
 plaintext = create_plaintext(message)
 
 print("Le message choisit donne, en chiffre : ", plaintext, "\n")
 
-start_time = time.time()
 cypher = crypting_RSA(n, e, plaintext)
-end_time_crypt = time.time() - start_time
 
 print("Le cypher donne : ", cypher)
-print("--- %s seconds ---" % end_time_crypt, "\n")
 
 start_time = time.time()
 plaintextDecrypt = decrypt_RSA(p, q, e, cypher)
@@ -58,3 +55,13 @@ end_time_decrypt = time.time() - start_time
 
 print("Le message decode donne : ", plaintextDecrypt)
 print("--- %s seconds ---" % end_time_decrypt, "\n")
+
+# Temps moyens pour cryptage et décryptage
+nb_chiffres = 200
+print("Temps moyen de génération des nombres premiers (", nb_chiffres, " chiffres): ")
+[average_time, data] = average_time_for_generate_prime_number(nb_chiffres, 20)
+print(average_time, " secondes\n")
+
+print("Temps moyen de l'exponentiation modulaire (", nb_chiffres, "chiffres): ")
+average_time = average_time_for_decryption(data)
+print(average_time, " secondes\n")
