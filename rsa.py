@@ -22,10 +22,10 @@ q = generate_prime_number(nb_digits+2)
 end_time_q = time.time() - start_time
 
 print("p choisi : ", p)
-print("--- %s seconds ---" % end_time_p, "\n")
+print("Trouvé en %s seconds ---" % end_time_p, "\n")
 
 print("q choisi : ", q)
-print("--- %s seconds ---" % end_time_q, "\n")
+print("Trouvé en %s seconds ---" % end_time_q, "\n")
 
 # Calculer n
 n= p*q
@@ -54,7 +54,7 @@ plaintextDecrypt = decrypt_RSA(p, q, e, cypher)
 end_time_decrypt = time.time() - start_time
 
 print("Le message decode donne : ", plaintextDecrypt)
-print("--- %s seconds ---" % end_time_decrypt, "\n")
+print("Trouvé en %s seconds ---" % end_time_decrypt, "\n")
 
 # Temps moyens pour cryptage et décryptage
 nb_chiffres = 200
